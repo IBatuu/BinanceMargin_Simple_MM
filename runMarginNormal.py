@@ -18,7 +18,6 @@ import pandas as pd
 client = Spot(key=d.nanceSubApi, secret=d.secretSubApi)
 listenKey = client.new_isolated_margin_listen_key("BTCUSDT")
 key = listenKey["listenKey"]
-#print(client.account())
 
 lastTradedPrice = None
 previousTradedPrice = None
@@ -219,27 +218,6 @@ def wsUserDataThread(*args):
 def keepAlive(*args):
     time.sleep(1800)
     client.renew_isolated_margin_listen_key()
-#def atr(*args):
-#    global stopMargin, bidAskMargin
-#    try:
-#        url = f"https://www.alphavantage.co/query?function=ATR&symbol=BTCUSD&interval=1min&time_period=4&apikey={d.alphaVantage2}"
-#        r = requests.get(url)
-#        data = r.json()
-#        lastRefresh = data['Meta Data']['3: Last Refreshed']
-#        atr = float(data['Technical Analysis: ATR'][lastRefresh[:-3]]['ATR'])
-#        if atr >= 40:
-#            stopMargin = 100
-#            bidAskMargin = 8
-#        else:
-#            stopMargin = 55
-#            bidAskMargin = 8
-#    except Exception as e:
-#        print(e)
-#        pass
-#    time.sleep(60)
-
-        
-
     print(atr>50)
 def checkForNakedPositions():
     while True:
@@ -300,8 +278,6 @@ def bid():
         }
     try:
         response1 = client.new_margin_order(**btcusdtbidParams)
-        #cancelBidId = response1["orderId"]
-        #print(response1)
     except Exception as e:
         print(e)
         pass
