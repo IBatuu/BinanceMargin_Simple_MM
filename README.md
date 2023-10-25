@@ -1,6 +1,5 @@
 # BinanceMargin_Simple_MM
-
-This script is a simple market-making script for Binance Spot/Margin. 
+The script is a simple market-making script for Binance Spot/Margin.
 
 This script is more of a boilerplate than anything. It uses many parameters that can be changed and backtested. 
 
